@@ -113,7 +113,7 @@ def Assistant(command):
             response = requests.get("https://en.wikipedia.org/wiki/" + query)
             if response is not None:
                 html = bs4.BeautifulSoup(response.text, "html.parser")
-                title = html.select("#firstHeading")[0].text()
+                title = html.select("#firstHeading")[0].text
                 paragraphs = html.select("p")
                 for para in paragraphs:
                     print(para.text)
@@ -123,7 +123,7 @@ def Assistant(command):
                 language = "en"
                 myobj = gTTS(text=intro, lang=language, slow=False)
                 myobj.save(mp3name)
-                mixer.int()
+                mixer.init()
                 mixer.music.load("speech.mp3")
                 mixer.music.play()
     elif 'stop' in command:
